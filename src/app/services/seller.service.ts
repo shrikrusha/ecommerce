@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { SignUp } from '../data-type';
+import { SignUp, login } from '../data-type';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router'
 
@@ -8,7 +8,8 @@ import { Router } from '@angular/router'
   providedIn: 'root'
 })
 export class SellerService {
-  isSellerLoggedIn= new BehaviorSubject<boolean>(false)
+  isSellerLoggedIn= new BehaviorSubject<boolean>(false);
+  isLoginError= new EventEmitter<Boolean>(false)
   constructor(private httpclient:HttpClient,private router:Router) { }
 
   userSignUp(data:SignUp){
@@ -24,5 +25,23 @@ export class SellerService {
       this.isSellerLoggedIn.next(true);
       this.router.navigate(['seller-home']);
     }
+  }
+
+  userLogin(data:login){
+    console.log("login data",data)
+    this.httpclient.get('http://localhost:3000/seller?email='+data.email+'&password='+data.password,
+    {observe:'response'}
+    ).subscribe((result:any)=>{
+      console.log("htrs",result)
+      if(result && result.body && result.body.length){
+        console.log('success')
+        localStorage.setItem('seller', JSON.stringify(result.body));
+        this.router.navigate(['seller-home']);
+      }
+      else{
+        console.log('failed');
+        this.isLoginError.emit(true)
+      }
+    })
   }
 }

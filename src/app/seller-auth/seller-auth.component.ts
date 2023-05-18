@@ -11,12 +11,28 @@ import { SignUp } from '../data-type';
   styleUrls: ['./seller-auth.component.scss']
 })
 export class SellerAuthComponent implements OnInit{
+  showLogin = false;
+  authError:string = '';
   constructor(private sellerService:SellerService, private router:Router){}
   ngOnInit(){
-    this.sellerService.reloadSeller()
+    this.sellerService.reloadSeller();
+   
   }
   signup(data:SignUp):void{
-    console.log(data);
     this.sellerService.userSignUp(data)
+  }
+  login(data:SignUp):void{
+    this.sellerService.userLogin(data);
+    this.sellerService.isLoginError.subscribe((error)=>{
+      if(error){
+        this.authError = "Email or Password is not correct"
+      }
+    })
+  }
+  openLogin(){
+    this.showLogin= true;
+  }
+  openSignup(){
+    this.showLogin= false;
   }
 }
