@@ -22,7 +22,8 @@ const routes: Routes = [
   },
   {
     path:'seller-add-product',
-    component:SellerAddProductComponent
+    component:SellerAddProductComponent,
+    canActivate:[SellerGuard]
   }
 ];
 
