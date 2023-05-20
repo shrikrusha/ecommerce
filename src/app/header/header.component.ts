@@ -16,7 +16,6 @@ export class HeaderComponent implements OnInit{
     
     if(val.url){
       if(localStorage.getItem('seller') && val.url.includes('seller')){
-        console.log('in seller area');
         this.menuType="seller";
         if(localStorage.getItem('seller')){
           let sellerStore = localStorage.getItem('seller');
@@ -25,7 +24,6 @@ export class HeaderComponent implements OnInit{
         }
       }
       else{
-        console.log('not in seller area');
         this.menuType='default'
       }
     }

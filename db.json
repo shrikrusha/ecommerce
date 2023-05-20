@@ -12,6 +12,34 @@
       "password": "1234",
       "id": 2
     }
-
+  ],
+  "products": [
+    {
+      "name": "Iphone 14",
+      "price": "90000",
+      "color": "Black",
+      "category": "Mobile",
+      "description": "This is iphone 14",
+      "image": "https://cdn.pixabay.com/photo/2013/07/13/12/46/iphone-160307_960_720.png",
+      "id": 1
+    },
+    {
+      "name": "i phone 14",
+      "price": "95000",
+      "color": "black",
+      "category": "Mobile",
+      "description": "this is best mobile",
+      "image": "https://cdn.pixabay.com/photo/2013/07/13/12/46/iphone-160307_960_720.png",
+      "id": 2
+    },
+    {
+      "name": "Iphone 14",
+      "price": "100000",
+      "color": "White",
+      "category": "mobile",
+      "discription": "This is iphone 14",
+      "image": "https://cdn.pixabay.com/photo/2013/07/13/12/46/iphone-160307_960_720.png",
+      "id": 3
+    }
   ]
 }
