@@ -28,18 +28,15 @@ export class SellerService {
   }
 
   userLogin(data:login){
-    console.log("login data",data)
+
     this.httpclient.get('http://localhost:3000/seller?email='+data.email+'&password='+data.password,
     {observe:'response'}
     ).subscribe((result:any)=>{
-      console.log("htrs",result)
       if(result && result.body && result.body.length){
-        console.log('success')
         localStorage.setItem('seller', JSON.stringify(result.body));
         this.router.navigate(['seller-home']);
       }
       else{
-        console.log('failed');
         this.isLoginError.emit(true)
       }
     })

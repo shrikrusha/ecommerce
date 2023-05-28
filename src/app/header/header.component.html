@@ -33,10 +33,15 @@
             <a class="nav-link" href="#" tabindex="-1">{{sellerName | titlecase}}</a>
           </li>
         </ul>
-        <form class="d-flex" *ngIf="menuType==='default'"> 
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+        <form class="d-flex" *ngIf="menuType==='default'" style="position: relative;"> 
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" (keyup)="searchProduct($event)" (blur)="hideSearch()" #searchInput>
+          <button class="btn btn-outline-success" type="submit" (click)="submitSearch(searchInput.value)">Search</button>
+          
+          <ul class="suggested-result" *ngIf="searchResult?.length">
+            <li *ngFor="let items of searchResult" class="mb-3"><a>{{items.name}}</a></li>
+          </ul>
         </form>
+        
       </div>
     </div>
   </nav>

@@ -22,7 +22,14 @@ export class ProductService {
     return this.httpclient.get<product>('http://localhost:3000/products/'+id);
   }
   updateProduct(productdata:product){
-    console.log("sertvice p data",productdata);
     return this.httpclient.put<product>('http://localhost:3000/products/'+productdata.id,productdata);
   }
+  popularProduct(){
+    return this.httpclient.get<product[]>('http://localhost:3000/products?_limit=4');
+  }
+  searchProduct(query:string){
+    // debugger
+    return this.httpclient.get<product[]>('http://localhost:3000/products?q='+query);
+  }
+  
 }

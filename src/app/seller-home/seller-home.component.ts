@@ -15,7 +15,6 @@ export class SellerHomeComponent implements OnInit{
     this.list();
   }
   deleteProduct(id:number){
-    console.warn("test id",id);
     this.productService.deleteProduct(id).subscribe((result)=>{
       if(result){
         this.productMessage="Product is deleted";
@@ -28,7 +27,6 @@ export class SellerHomeComponent implements OnInit{
   }
   list(){
     this.productService.productList().subscribe((result)=>{
-      console.log(result);
       this.productList=result;
     })
   }

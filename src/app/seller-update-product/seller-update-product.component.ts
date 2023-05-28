@@ -14,15 +14,12 @@ export class SellerUpdateProductComponent implements OnInit{
   constructor (private activatedroute:ActivatedRoute, private productservice:ProductService){}
   ngOnInit(): void {
     let productId=this.activatedroute.snapshot.paramMap.get('id');
-    console.log("Product Id",productId);
     productId && this.productservice.getProduct(productId).subscribe((data)=>{
-      console.log("single data",data)
       this.productData=data;
     })
 
   }
   submit(data:product){
-    console.warn(data)
     if(this.productData){
       data.id=this.productData.id;
     }
