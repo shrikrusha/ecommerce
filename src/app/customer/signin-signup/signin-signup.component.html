@@ -1,0 +1,162 @@
+<div class="container mt-4">
+  <div class="row">
+    <!-- Sign Up Form -->
+    <div *ngIf="isSignUp" class="col-md-6 offset-md-3">
+      <h3>Sign Up</h3>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmitSignUp()">
+       <!-- Name -->
+       <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input id="name" type="text" class="form-control" formControlName="name" />
+        <div *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched" class="text-danger">
+          Name is required
+        </div>
+      </div>
+        <!-- Mobile Number -->
+        <div class="mb-3">
+          <label for="mobNumber" class="form-label">Mobile Number</label>
+          <input id="mobNumber" type="tel" class="form-control" formControlName="mobNumber" />
+          <div *ngIf="userForm.controls['mobNumber'].invalid && userForm.controls['mobNumber'].touched" class="text-danger">
+            Please enter a valid 10-digit mobile number
+          </div>
+        </div>
+
+        <!-- Age -->
+        <div class="mb-3">
+          <label for="age" class="form-label">Age</label>
+          <input id="age" type="number" class="form-control" formControlName="age" />
+          <div *ngIf="userForm.controls['age'].invalid && userForm.controls['age'].touched" class="text-danger">
+            Please enter a valid age between 18 and 100
+          </div>
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="mb-3">
+          <label for="dob" class="form-label">Date of Birth</label>
+          <input id="dob" type="date" class="form-control" formControlName="dob" />
+          <div *ngIf="userForm.controls['dob'].invalid && userForm.controls['dob'].touched" class="text-danger">
+            Date of Birth is required
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input id="email" type="email" class="form-control" formControlName="email" />
+          <div *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched" class="text-danger">
+            Please enter a valid email
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input id="password" type="password" class="form-control" formControlName="password" />
+          <div *ngIf="userForm.controls['password'].invalid && userForm.controls['password'].touched" class="text-danger">
+            Password must be at least 8 characters long
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="mb-3">
+          <label for="address" class="form-label">Address</label>
+          <input id="addLine1" type="text" class="form-control mb-2" placeholder="Address Line 1" formControlName="addLine1" />
+          <input id="addLine2" type="text" class="form-control mb-2" placeholder="Address Line 2" formControlName="addLine2" />
+          <input id="city" type="text" class="form-control mb-2" placeholder="City" formControlName="city" />
+          <input id="state" type="text" class="form-control mb-2" placeholder="State" formControlName="state" />
+          <input id="zipCode" type="text" class="form-control" placeholder="Zip Code" formControlName="zipCode" />
+          <div *ngIf="userForm.controls['zipCode'].invalid && userForm.controls['zipCode'].touched" class="text-danger">
+            Zip Code is required
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="language" class="form-label">Languages</label>
+          <div *ngFor="let lang of languages">
+            <input
+              type="checkbox"
+              [value]="lang"
+              [checked]="userForm.get('language')?.value.includes(lang)"
+              (change)="onLanguageChange($event)"
+            /> {{ lang }}
+          </div>
+          <div *ngIf="userForm.get('language')?.invalid && userForm.get('language')?.touched" class="text-danger">
+            At least one language is required
+          </div>
+        </div>
+        
+        <!-- Gender -->
+        <div class="mb-3">
+          <label class="form-label">Gender</label><br />
+          <div>
+            <input type="radio" value="Male" formControlName="gender" /> Male
+            <input type="radio" value="Female" formControlName="gender" /> Female
+          </div>
+          <div *ngIf="userForm.controls['gender'].invalid && userForm.controls['gender'].touched" class="text-danger">
+            Gender is required
+          </div>
+        </div>
+
+        <!-- About You -->
+        <div class="mb-3">
+          <label for="aboutYou" class="form-label">About You</label>
+          <textarea id="aboutYou" class="form-control" rows="3" formControlName="aboutYou"></textarea>
+        </div>
+
+        <!-- Upload Photo -->
+        <div class="mb-3">
+          <label for="uploadPhoto" class="form-label">Upload Photo</label>
+          <input id="uploadPhoto" type="file" class="form-control" formControlName="uploadPhoto" />
+        </div>
+
+        <!-- Agree to terms -->
+        <div class="mb-3 form-check">
+          <input id="agreetc" type="checkbox" class="form-check-input" formControlName="agreetc" />
+          <label for="agreetc" class="form-check-label">Agree to terms and conditions</label>
+          <div *ngIf="userForm.controls['agreetc'].invalid && userForm.controls['agreetc'].touched" class="text-danger">
+            You must agree to the terms and conditions
+          </div>
+        </div>
+
+        <!-- Role -->
+        <div class="mb-3">
+          <label for="role" class="form-label">Role</label>
+          <select id="role" class="form-select" formControlName="role">
+            <option value="buyer">Buyer</option>
+            <option value="seller">Seller</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+      <a routerLink="/sign-in">Already have an account? Click here to login</a>
+    </div>
+
+    <!-- Sign In Form -->
+    <div *ngIf="!isSignUp" class="col-md-6 offset-md-3">
+      <h3>Login Ecommerce</h3>
+      <form [formGroup]="signInForm" (ngSubmit)="onSubmitSignIn()">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" formControlName="useremail">
+          <div *ngIf="signInForm.controls['useremail'].invalid && signInForm.controls['useremail'].touched" class="text-danger">
+            Please enter a valid email
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" formControlName="password">
+          <div *ngIf="signInForm.controls['password'].invalid && signInForm.controls['password'].touched" class="text-danger">
+            Password must be at least 8 characters long
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-primary" type="submit">Login</button>
+        </div>
+      </form>
+      <a routerLink="/sign-up">Don't have an account? Click here to Sign Up</a>
+    </div>
+  </div>
+</div>

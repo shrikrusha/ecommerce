@@ -1,0 +1,71 @@
+<div class="xc-cart-page pt-4 pb-4">
+    <div class="container">
+        <form action="#">
+            <div class="row gutter-y-30 gx-5">
+                <div class="col-lg-8 col-xl-9">
+                    <div class="xc-cart-page__table" *ngIf="cartData">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="product-thumbnail">Images</th>
+                                    <th class="cart-product-name">Product</th>
+                                    <th class="product-price">Price</th>
+                                    <th class="product-discount">Discount Percentage</th>
+                                    <th class="product-quantity">Quantity</th>
+                                    <th class="product-subtotal">Total</th>
+                                    <th class="product-remove">Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let product of cartData.products">
+                                    <td class="product-thumbnail">
+                                        <a href="product-details.html">
+                                            <img [src]="product.thumbnail" alt="{{ product.title }}">
+                                        </a>
+                                    </td>
+                                    <td class="product-name">
+                                        <a href="product-details.html">{{ product.title }}</a>
+                                    </td>
+                                    <td class="product-price"><span class="amount">${{ product.price }}</span></td>
+                                    <td class="product-discount"><span class="amount">{{ product.discountPercentage }}%</span></td>
+                                    <td class="product-quantity">
+                                        <div class="xc-product-quantity mt-10 mb-10">
+                                            <span class="xc-cart-minus sub" (click)="decrementQuantity(product)">
+                                                <i class="fas fa-minus"></i>
+                                            </span>
+                                            <input class="xc-cart-input" type="text" [value]="product.quantity" readonly>
+                                            <span class="xc-cart-plus add" (click)="incrementQuantity(product)">
+                                                <i class="fas fa-plus"></i>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td class="product-subtotal">
+                                        <span class="amount">
+                                          {{ product.discountedTotal ? product.discountedTotal.toFixed(2) : '0.00' }}
+                                        </span>
+                                      </td>
+                                      
+                                    <td class="product-remove">
+                                        <button type="button" (click)="removeProduct(product.id)">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </td>                                    
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="totalWrapper">
+                            <div class="totalDiscount"><strong>Total Discount:</strong> <span class="amount">${{ totalDiscount.toFixed(2) }}</span></div>
+                            <div class="grandTotal mt-3"><strong>Grand Total:</strong> <span class="amount">${{ grandTotal.toFixed(2) }}</span></div>
+                        </div>
+                        <a (click)="placeOrder()" class="btn btn-primary">Delever Here</a>
+                    </div>
+                    <div  *ngIf="!cartData">
+                        Not Product Available in Cart
+                    </div>
+                    
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

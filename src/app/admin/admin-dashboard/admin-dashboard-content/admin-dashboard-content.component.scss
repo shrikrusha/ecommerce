@@ -1,0 +1,60 @@
+.row-gap{
+    row-gap: 28px;
+}
+.column-gap{
+    column-gap: 16px;
+}
+.card {
+    margin-bottom: 30px;
+    .card-title {
+        padding: 20px 0 15px 0;
+        font-size: 18px;
+        font-weight: 600;
+        color: #012970;
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+        margin-bottom: 0;
+    }
+    h6 {
+        font-size: 28px;
+        color: #012970;
+        font-weight: 700;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    .card-icon {
+        font-size: 32px;
+        line-height: 0;
+        width: 64px;
+        height: 64px;
+        flex-shrink: 0;
+        flex-grow: 0;
+    }
+}
+.badge{
+    border: 10px;
+    font-weight:500;
+}
+.badge-success{
+    background-color: #28A645;
+}
+.badge-danger{
+    background-color: #DC3545;
+}
+.badge-warning{
+    background-color: #FFC107;
+}
+.badge-info{
+    background-color: #17A2B8;
+}
+.product{
+    display: flex;
+}
+td, th {
+    vertical-align: middle;
+  }
+  .cardIcon{
+    height: 50px;
+    width: 50px;
+  }

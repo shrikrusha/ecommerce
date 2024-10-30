@@ -1,0 +1,30 @@
+// show the nav if the class exists and toggle the icon
+$side-nav-width: 230px;
+
+  
+  // style the side navigation
+  .canvas .side-nav  {
+    position: absolute;
+    display: block;
+    width: $side-nav-width;
+    transform: translateX(-$side-nav-width);
+      
+    color: #E6E9F7;
+    box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
+    background-color: #fff;
+    padding-top: 20px;
+    min-height: 100%;
+    
+    a       {
+      display: flex;
+      align-items: center;
+      font-size: 15px;
+      font-weight: 600;
+      color: #4154f1;
+      transition: 0.3;
+      // background: #f6f9ff;
+      padding: 10px 15px;
+      border-radius: 4px;
+    }
+    
+  }

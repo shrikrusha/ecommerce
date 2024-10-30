@@ -1,0 +1,108 @@
+<div class="shop-header bg-black" id="xc-header-sticky">
+  <div class="container">
+      <div class="shop-header__wrapper">
+          <div class="shop-header__logo">
+              <a href="index.html"><img src="../../../assets/order-placed.svg" alt="logo" ></a> Online<span class="basecolor">Shop</span>
+          </div>
+          <div class="shop-header__right">
+              <div class="shop-header__search d-none d-xl-block">
+                  <form action="#">
+                      <input type="search" placeholder="Search">
+                      <button type="submit">Search</button>
+                  </form>
+              </div>
+              <div class="shop-header__btns d-none d-lg-flex">
+                  <span class="shop-header__btn profile-btn">
+                    <mat-icon svgIcon="person" class="matIcon"></mat-icon>
+                    <span class="shop-header__link">Profile</span>  
+                    <div class="profile-btn-option">
+                      <a class="profile-btn-item" routerLinkActive="active" routerLink="/my-profile">My Profile</a>
+                      <a class="profile-btn-item mt-2" (click)="logout()">Sign Out</a>
+                    </div>
+                    
+                  </span>
+                  <!-- <a href="#" class="shop-header__btn">
+                    <mat-icon svgIcon="message" class="matIcon"></mat-icon><span class="shop-header__link">Message</span>
+                  </a> -->
+                  <a href="#" class="shop-header__btn">
+                    <mat-icon svgIcon="heart-fill" class="matIcon"></mat-icon><span class="shop-header__link">Wishlist</span>
+                  </a>
+                  <a routerLink="cart" class="shop-header__btn shop-cart">
+                    <span *ngIf="totalCartProduct" class="shop-cart-badge">{{totalCartProduct}}</span>
+                    
+                    <mat-icon svgIcon="cart" class="matIcon"></mat-icon><span class="shop-header__link">My cart</span>
+                  </a>
+                  <!-- mobile drawer  -->
+                  <div class="shop-header__hamburger d-xl-none">
+                      <button type="button" class="xc-offcanvas-btn shop-header__btn">
+                          <i class="icon-menu"></i>Nav Bar
+                      </button>
+                  </div>
+              </div>
+          </div>
+          <!-- mobile drawer  -->
+          <div class="shop-header__hamburger d-lg-none">
+              <button type="button" class="xc-offcanvas-btn shop-header__btn">
+                  <i class="icon-menu"></i>
+              </button>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="shop-header__bottom d-none d-lg-block">
+  <div class="container">
+      <div class="shop-header__bottom-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+              <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                <li class="nav-item">
+                  <a class="nav-link active" routerLinkActive="active" [routerLink]="['']" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLinkActive="active"  [routerLink]="['/about-us']">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/shop']">Shop</a>
+                </li>
+                <li class="nav-item" *ngIf="role === 'buyer'">
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/my-order']">Order</a>
+                </li>
+                <li class="nav-item" *ngIf="role === 'admin'">
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/all-order']">Order All</a>
+                </li>
+                <li class="nav-item" *ngIf="role === 'seller'">
+                  <a class="nav-link"  routerLinkActive="active" [routerLink]="['/seller/produc']">Product</a>
+                </li>
+                <li class="nav-item" *ngIf="role === 'admin'">
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/product']">All Product</a>
+                </li>
+                <li class="nav-item" *ngIf="role === 'admin'">
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/user']">User</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/contact-us']">Contact</a>
+                </li>
+              </ul>
+        
+              <!-- Show login options if the user is not logged in -->
+              <ul class="navbar-nav ml-auto" *ngIf="!logged_in">
+                <li class="nav-item"><a routerLinkActive="active" routerLink="/sign-in" class="nav-link sim-pointer">Sign In</a></li>
+                <li class="nav-item"><a routerLinkActive="active" routerLink="/sign-up" class="nav-link sim-pointer">Sign Up</a></li>
+              </ul>
+        
+              <!-- Show profile and logout if the user is logged in -->
+              <!-- <ul class="navbar-nav ml-auto" *ngIf="logged_in">
+                <li class="nav-item"><a routerLinkActive="active" routerLink="/my-profile" class="nav-link sim-pointer">My Profile</a></li>
+                <li class="nav-item"><a class="nav-link sim-pointer" (click)="logout()">Log Out</a></li>
+              </ul> -->
+            </div>
+          </div>
+        </nav>
+      </div>
+  </div>
+</div>
+

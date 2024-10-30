@@ -1,0 +1,41 @@
+<div class="accordion" id="shop_range">
+    <div class="accordion-item">
+       <h2 class="accordion-header" id="range__widget">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#range_widget_collapse" aria-expanded="true" aria-controls="range_widget_collapse">Price range
+          </button>
+       </h2>
+       <div id="range_widget_collapse" class="accordion-collapse collapse show" aria-labelledby="range__widget" data-bs-parent="#shop_range">
+          <div class="accordion-body">
+             <div class="price-ranger">
+              <div class="wrapper">
+                  <div *ngIf="sliderKey" class="slidercontainer">
+                    <div id="{{ 'slider-' + sliderKey }}" class="slider-track"></div>
+                    <input
+                      type="range"
+                      min="{{ minLimit }}"
+                      max="{{ maxLimit }}"
+                      step="1"
+                      [(ngModel)]="minValue"
+                      (ngModelChange)="valueChanged(sliderKey)"
+                    />
+                    <input
+                      type="range"
+                      min="{{ minLimit }}"
+                      max="{{ maxLimit }}"
+                      [(ngModel)]="maxValue"
+                      step="1"
+                      (ngModelChange)="valueChanged(sliderKey)"
+                    />
+                  </div>
+                </div>
+                <div class="ranger-min-max-block">
+                   <div style="display: flex;">$<input type="text" readonly="" class="min" value="{{minValue}}"></div>
+                   <div> - </div>
+                   <div style="display: flex;">$<input type="text" readonly="" class="max" value="{{maxValue}}"></div>
+                   <input type="submit" value="Filter">
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>

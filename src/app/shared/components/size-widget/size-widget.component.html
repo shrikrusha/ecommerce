@@ -1,0 +1,19 @@
+<div class="accordion" id="shop_size">
+    <div class="accordion-item">
+       <h2 class="accordion-header" id="size__widget">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#size_widget_collapse" aria-expanded="true" aria-controls="size_widget_collapse">Size
+          </button>
+       </h2>
+       <div id="size_widget_collapse" class="accordion-collapse collapse show" aria-labelledby="size__widget" data-bs-parent="#shop_size">
+          <div class="accordion-body">
+             <div class="shop__widget-list">
+                <div *ngFor="let tag of sizes" class="shop__widget-list-item-2">
+                   <input type="checkbox" id="{{tag}}" value="{{tag}}">
+                   <label for="c-black">{{tag}}</label>
+                </div>
+         
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>

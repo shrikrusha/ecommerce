@@ -1,0 +1,44 @@
+<app-breadcumbs [breadcrumbItems]="breadcrumbItems"></app-breadcumbs>
+<div class="product-container">
+    <h2 class="m-2">Product Management</h2>
+    <div class="card p-4" style="align-items: end;">
+       <!-- Add Product Button -->
+    <button class="btn btn-primary" (click)="addProductPopup()">Add Product</button>
+  
+    <!-- Product Table -->
+    <table class="table table-striped mt-4">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Product Name</th>
+          <th>Product Description</th>
+          <th>Price</th>
+          <th>Discount</th>
+          <th>SKU</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of all_product_data | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalItems }">
+          <td>{{ product.id }}</td>
+          <td>{{ product.title }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.price}}</td>
+          <td>{{ product.discountPercentage }}</td>
+          <td>{{ product.sku }}</td>
+          <td>
+            <div class="d-flex">
+              <button class="btn btn-sm btn-info me-2" (click)="editProduct(product.id)">Edit</button>
+              <button class="btn btn-sm btn-danger" (click)="deleteProduct(product.id)">Delete</button>
+            </div>
+            
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="shop-pagination mt-5 text-center">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+   </div>
+    </div>
+  </div>
+  

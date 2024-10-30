@@ -1,0 +1,89 @@
+app-seller-dashboard{
+    display: block;
+    height: 100%;
+}.progressbar-div{
+    .progress{
+        margin-top: 0.7rem;
+        height: 1.5rem;
+        .progress-bar{
+            color: black;
+            font-weight: bold;
+        }
+    }
+
+}
+
+
+$side-nav-width: 230px;
+
+// the overall container
+.canvas  {
+  height: 100%;
+  transition: .5s cubic-bezier(.91,.06,.47,1.05) transform;
+}
+
+// show the nav if the class exists and toggle the icon
+.canvas.show-nav   {
+  transform: translateX($side-nav-width);
+  .fa-window-close {
+    display: block;
+  }
+  .fa-bars {
+    display:none;
+  }
+}
+
+// style the side navigation
+.canvas .side-nav  {
+  position: absolute;
+  display: block;
+  width: $side-nav-width;
+  transform: translateX(-$side-nav-width);
+    
+  color: #E6E9F7;
+  box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
+  background-color: #fff;
+  padding-top: 20px;
+  min-height: 100%;
+  
+  a       {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: #4154f1;
+    transition: 0.3;
+    // background: #f6f9ff;
+    padding: 10px 15px;
+    border-radius: 4px;
+  }
+  
+}
+
+// main content and toggle button
+.main-content   {
+  padding: 32px;
+  background-color: #F6F9FF;
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  overflow: auto;
+}
+
+.show-nav .main-content{
+    width: calc(100% - 230px);
+}
+.toggle-button  {
+  font-size: 3em;
+  color: #333;
+}
+.fa-window-close {
+  display:none;
+  margin:12px 0px;
+}
+
+.sidebarIcon {
+  margin-right: 11px;
+  height: 20px;
+  width: 19px;
+}

@@ -1,0 +1,112 @@
+<app-breadcumbs [breadcrumbItems]="breadcrumbItems"></app-breadcumbs>
+<section class="shop-area pt-5 pb-5">
+   <div class="container">
+      
+      <div class="row">
+         <div class="col-md-12">
+            
+        </div>
+        
+         <div class="col-xl-3 col-lg-4">
+            <div class="shop__sidebar on-left">
+               <div class="shop__widget shop-accordion">
+                  <app-category-widget [categories]="categories" (change)="onCategoryChange($event)"></app-category-widget>
+               </div>
+               <div class="shop__widget shop-accordion">
+                  <app-brand-widget [brands]="brands" (change)="onBrandChange($event)"></app-brand-widget>
+               </div>
+            </div>
+         </div>
+         <div class="col-xl-9 col-lg-8">
+            <div class="shop-main-wrapper">
+               <div class="shop-top mb-45 bg-white">
+                  <div class="row align-items-center">
+                     <div class="col-md-6">
+                        <div class="shop-top-left d-flex align-items-center">
+                           <div class="shop-top-result">
+                              <p>
+                                 Showing {{ (page - 1) * itemsPerPage + 1 }} - 
+                                 {{ (page * itemsPerPage) > totalItems ? totalItems : (page * itemsPerPage) }} of {{ totalItems }} results
+                              </p>
+                           </div>
+                        </div>                        
+                     </div>
+                     <div class="col-md-6">
+                        <div class="shop-top-right d-sm-flex align-items-center justify-content-md-end">
+                           <div class="shop-top-select">
+                              <mat-form-field appearance="outline">
+                                 <mat-label>Search Products</mat-label>
+                                 <input matInput [(ngModel)]="searchTerm" (ngModelChange)="applyFilters()" placeholder="Search by product name">
+                              </mat-form-field>
+                              
+                           </div>
+                       </div>
+                        <!-- <div class="shop-top-right d-sm-flex align-items-center justify-content-md-end">
+                           <div class="shop-top-select">
+                              <mat-form-field appearance="outline">
+                                 <mat-label>Default Sorting</mat-label>
+                                 <mat-select>
+                                    <mat-option>Default Sorting</mat-option>
+                                    <mat-option *ngFor="let item of DefaultSorting" [value]="item.value">
+                                       {{item.viewValue}}
+                                    </mat-option>
+                                 </mat-select>
+                              </mat-form-field>
+                           </div>
+                        </div> -->
+                     </div>
+                  </div>
+               </div>
+               <div class="shop-items-wrapper shop-item-primary">
+                  <div class="row">
+                     <div class="col-md-4 product" *ngFor="let product of all_products | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalItems }">
+                        <div class="card product-card">
+                           <div class="product-img-wrapper">
+                              <img [src]="product.thumbnail" alt="{{product.title}}" class="card-img-top product-img">
+                              
+                              <div class="overlay">
+                                 <a (click)="viewProduct(product.id)" class="btn btn-outline-light">View Product</a>
+                              </div>
+                           </div>
+                           <div class="card-body">
+                              <h4 class="card-title">{{product.title}}</h4>
+                              
+                              <p>
+                                 <span class="float-label"><strong>MRP</strong>: $<del>{{product.price}}</del></span>&nbsp;&nbsp;
+                                 <span class="float-label"><strong>Discount</strong>: {{product.discountPercentage}}%</span>
+                              </p>
+                              
+                              <p class="rating">
+                                 <strong>Rating</strong>:
+                                 <span *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                                    <i class="fa" 
+                                       [ngClass]="{
+                                       'fa-star': (i + 1) <= product.rating,
+                                       'fa-star-half-o': (i + 1) > product.rating && (i + 1) - product.rating < 1,
+                                       'fa-star-o': (i + 1) > product.rating
+                                       }"></i>
+                                 </span>
+                              </p>
+
+                              <p class="card-text product-desc">{{ product.description | slice:0:50 }}{{ product.description.length > 50 ? '...' : '' }}</p>
+                              
+                              <div class="text-center">
+                                 <a (click)="addToCart(product)" class="btn btn-primary">Add to Cart</a>
+                               </div>
+                               
+                              
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  
+                  <div class="shop-pagination mt-5 text-center">
+                     <pagination-controls (pageChange)="page = $event; applyFilters()"></pagination-controls>
+
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>

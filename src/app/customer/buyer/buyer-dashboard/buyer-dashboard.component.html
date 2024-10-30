@@ -1,0 +1,23 @@
+<br>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Buyer</a></li>
+        <li class="breadcrumb-item"><a routerLink="/buyer-dashboard">product</a></li>
+    </ol>
+</nav>
+<div class="row">
+    <div class="col-md-4 product" *ngFor="let product of all_products">
+        <div class="card">
+            <img src="{{product.uploadPhoto}}" alt="{{product.name}}" class="card-img-top product-img">
+            <div class="card-body">
+                <h4 class="card-title">{{product.name}}</h4>
+                <p><span class="float-label"><strong>MRP</strong>:<del>{{product.mrp}} </del></span>&nbsp;&nbsp;
+                    <span class="float-label"><strong>DP</strong>:{{product.dp}}</span></p>
+                    <br>
+                <p class="card-text product-desc">{{product.productDescription}}</p>
+                <a (click)="addToCart()" class="btn btn-primary me-3"> Add to Cart</a>
+                <a (click)="buyProduct(product.id)" class="btn btn-primary float-right"> Buy Now</a>
+            </div>
+        </div>
+    </div>
+</div>

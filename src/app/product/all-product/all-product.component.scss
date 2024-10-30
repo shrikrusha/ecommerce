@@ -1,0 +1,116 @@
+
+app-all-product{
+   display: block;
+   height: 100%;
+   overflow: auto;
+}
+
+.xc-shop-top {
+    padding: 10px 20px;
+}
+
+.shop-top-result {
+    font-size: 16px;
+}
+
+.product{
+    margin-top: 1rem;
+    .card{
+        img{
+            height: 15rem;
+            padding: 1rem;
+        }
+        .card-body{
+            border-top: 1px solid #dee2e7;
+            .product-desc{
+                height: 3rem;
+                overflow:hidden;
+                text-overflow: ellipsis;
+            }
+            .card-title{
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+/* Product card styling */
+.product-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    transition: box-shadow 0.3s ease;
+ }
+ 
+ .product-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+ }
+ 
+ .product-img-wrapper {
+    position: relative;
+ }
+ 
+ .product-img {
+    width: 100%;
+    height: auto;
+ }
+ 
+ /* Overlay for 'View Product' */
+ .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+ }
+ 
+ .product-card:hover .overlay {
+    opacity: 1;
+ }
+ 
+ .overlay a {
+    color: #fff;
+    padding: 10px 20px;
+    border: 1px solid #fff;
+    text-transform: uppercase;
+ }
+ .overlay .btn:hover {
+   color: var(--bs-btn-hover-color);
+   background-color: var(--bs-btn-hover-bg);
+   border-color: var(--bs-btn-hover-border-color);
+}
+ 
+ /* Rating stars */
+ .rating i.fa-star {
+    color: #FFD700;
+ }
+ 
+ .rating i.fa-star-o {
+    color: #ccc;
+ }
+ 
+
+ /* Full star */
+.rating i.fa-star {
+    color: #FFD700;
+ }
+ 
+ /* Half star */
+ .rating i.fa-star-half-o {
+    color: #FFD700;
+ }
+ 
+ /* Empty star */
+ .rating i.fa-star-o {
+    color: #ccc;
+ }
+ 

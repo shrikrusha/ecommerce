@@ -1,0 +1,223 @@
+<app-breadcumbs [breadcrumbItems]="breadcrumbItems"></app-breadcumbs>
+<div class="card p-4 mt-4">
+    <div class="form-container">
+      <h4 class="pagetitle">{{pagetitle}}</h4>
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Title</mat-label>
+                        <input matInput formControlName="title" />
+                    </mat-form-field>
+                </div>
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput formControlName="description" rows="4"></textarea>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Category</mat-label>
+                        <input matInput formControlName="category" />
+                    </mat-form-field>
+                </div>
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Price</mat-label>
+                        <input matInput formControlName="price" type="number" />
+                    </mat-form-field>
+                </div>
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Discount Percentage</mat-label>
+                        <input matInput formControlName="discountPercentage" type="number" />
+                    </mat-form-field>
+                </div>
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Stock</mat-label>
+                        <input matInput formControlName="stock" type="number" />
+                    </mat-form-field>
+                </div>
+                <!-- <div class="col-md-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Rating</mat-label>
+                        <input matInput formControlName="rating" type="number" />
+                    </mat-form-field>
+                </div> -->
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>SKU</mat-label>
+                        <input matInput formControlName="sku" />
+                    </mat-form-field>
+                </div>
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Weight</mat-label>
+                        <input matInput formControlName="weight" type="number" />
+                    </mat-form-field>
+                </div>
+                <div class="col-md-12">
+                    <div formGroupName="dimensions">
+                        <mat-form-field appearance="outline">
+                          <mat-label>Width</mat-label>
+                          <input matInput formControlName="width" type="number" />
+                        </mat-form-field>
+                  
+                        <mat-form-field appearance="outline">
+                          <mat-label>Height</mat-label>
+                          <input matInput formControlName="height" type="number" />
+                        </mat-form-field>
+                  
+                        <mat-form-field appearance="outline">
+                          <mat-label>Depth</mat-label>
+                          <input matInput formControlName="depth" type="number" />
+                        </mat-form-field>
+                      </div>
+                </div>
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Warranty Information</mat-label>
+                        <input matInput formControlName="warrantyInformation" />
+                    </mat-form-field>
+                </div>
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Shipping Information</mat-label>
+                        <input matInput formControlName="shippingInformation" />
+                      </mat-form-field>
+                </div>
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Availability Status</mat-label>
+                        <input matInput formControlName="availabilityStatus" />
+                      </mat-form-field>
+                </div>
+         
+                <div class="col-md-12">
+                  <mat-label>Tags</mat-label>
+                  <mat-form-field class="chip-list mt-2" appearance="outline">
+                    
+                    <mat-chip-list aria-label="Tag selection" formArrayName="tags">
+                      <mat-chip
+                        *ngFor="let tag of tags.controls; let i = index"
+
+                        [removable]="true"
+                        (removed)="removeTag(i)"
+                       class="me-2 mb-2">
+                        {{ tag.value }}
+                        <mat-icon matChipRemove>cancel</mat-icon>
+                      </mat-chip>
+                    </mat-chip-list>
+                    <input
+                      matInput
+                      placeholder="New tag..."
+                      #tagInput
+                      (keydown.enter)="addTag(tagInput.value); tagInput.value='';"
+                    />
+                  </mat-form-field>
+                </div>
+                
+                <!-- <div class="col-md-12">
+                    <div formArrayName="reviews">
+                        <mat-label>Reviews</mat-label>
+                        <div *ngFor="let review of reviews.controls; let i = index" [formGroupName]="i">
+                          <mat-form-field appearance="outline">
+                            <mat-label>Reviewer Name</mat-label>
+                            <input matInput formControlName="reviewerName" />
+                          </mat-form-field>
+                  
+                          <mat-form-field appearance="outline">
+                            <mat-label>Comment</mat-label>
+                            <textarea matInput formControlName="comment"></textarea>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                </div> -->
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Return Policy</mat-label>
+                        <input matInput formControlName="returnPolicy" />
+                      </mat-form-field>
+                </div>
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Minimum Order Quantity</mat-label>
+                        <input matInput formControlName="minimumOrderQuantity" type="number" />
+                      </mat-form-field>
+                </div>
+                <div class="col-md-12">
+                    <div formGroupName="meta">
+                        <mat-form-field appearance="outline">
+                          <mat-label>Created At</mat-label>
+                          <input matInput formControlName="createdAt" type="text" />
+                        </mat-form-field>
+                  
+                        <mat-form-field appearance="outline">
+                          <mat-label>Updated At</mat-label>
+                          <input matInput formControlName="updatedAt" type="text" />
+                        </mat-form-field>
+                  
+                        <mat-form-field appearance="outline">
+                          <mat-label>Barcode</mat-label>
+                          <input matInput formControlName="barcode" />
+                        </mat-form-field>
+                  
+                        <mat-form-field appearance="outline">
+                          <mat-label>QR Code</mat-label>
+                          <input matInput formControlName="qrCode" />
+                        </mat-form-field>
+                      </div>
+                </div>
+                <div class="col-md-12">
+                  <div formArrayName="images">
+                    <mat-label>Images</mat-label>
+                
+                    <!-- Image input UI -->
+                    <div class="image-upload mt-3">
+                      <!-- Dotted square border -->
+                      <div class="image-input-container">
+                        <!-- Upload text or icon in the center -->
+                        <span>Upload Images</span>
+                        <input type="file" (change)="handleImageUpload($event,'')" accept="image/*" multiple />
+                      </div>
+                    </div>
+                
+                    <!-- Show uploaded images below the input -->
+                    <div class="uploaded-images"  *ngIf="images.length>0">
+                      <div class="image-preview" *ngFor="let image of images.controls; let i = index">
+                        <img [src]="image.value" alt="Image Preview" width="100" height="100" *ngIf="image.value" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                  
+                <div class="col-md-12 mt-3">
+                  <mat-label>Thumbnail</mat-label>
+                    <div class="image-upload mt-2">
+                      <div class="image-input-container">
+                        <span>Upload Thumbnail</span>
+                        <input type="file" (change)="handleImageUpload($event, 'thumbnail')" accept="image/*" />
+                      </div>
+                    </div>
+                    <!-- Thumbnail preview -->
+                    <div class="uploaded-images" *ngIf="productForm.get('thumbnail')?.value">
+                      <img [src]="productForm.get('thumbnail')?.value" alt="Thumbnail Preview" width="100" height="100"  />
+                    </div>
+                    
+                    <input matInput formControlName="thumbnail" placeholder="Base64 thumbnail" readonly style="visibility: hidden;"/>
+                    <span>{{thumbnailname}}</span>
+                </div>
+                
+                
+                  
+            </div>
+        
+            <button mat-raised-button color="primary" type="submit" class="mt-4">Submit</button>
+          </form>
+    </div>
+    
+</div>

@@ -1,0 +1,132 @@
+<app-breadcumbs [breadcrumbItems]="breadcrumbItems"></app-breadcumbs>
+<div class="container mt-5" *ngIf="individual_product">
+   <div class="row">
+      <!-- Product Images -->
+      <div class="col-md-6">
+         <div class="product-main-image mb-3">
+            <!-- Bind the mainProductImage to the src attribute of the main image -->
+            <img [src]="mainProductImage" class="img-fluid" alt="Main Product Image">
+         </div>
+         <!-- Thumbnails -->
+         <div class="product-thumbnails d-flex">
+            <!-- Loop through productImages array and bind the click event to update the main image -->
+            <img *ngFor="let image of individual_product.images" 
+            [src]="image" 
+            class="img-thumbnail me-2" 
+            alt="Thumbnail" 
+            (click)="changeMainImage(image)">
+         </div>
+      </div>
+      <!-- Product Details -->
+      <div class="col-md-6">
+         <h1 class="product-title">{{ individual_product.title }}</h1>
+         <p class="text-muted">Category: <span class="text-primary">{{ individual_product.category }}</span></p>
+         <p class="lead">Price: ${{ individual_product.price }}</p>
+         <p>Discount: {{ individual_product.discountPercentage }}% off</p>
+         <p>Stock: <strong>{{ individual_product.availabilityStatus }}</strong></p>
+         <p>SKU: {{ individual_product.sku }}</p>
+         <!-- Product Rating -->
+         <div class="product-rating">
+            <app-rating [rating]="individual_product.rating" [color]="starColorW"></app-rating>
+            <span>(Rating: {{ individual_product.rating }}) </span>
+         </div>
+         <p class="mt-4"><strong>Description: </strong>{{ individual_product.description }}</p>
+         <p><strong>Weight:</strong> {{ individual_product.weight }} lbs</p>
+         <p><strong>Dimensions:</strong> {{ individual_product.dimensions.width }} x {{ individual_product.dimensions.height }} x {{ individual_product.dimensions.depth }} inches</p>
+         <!-- Buttons -->
+         <div class="mt-4">
+            <button (click)="addToCart(individual_product)" class="btn btn-primary me-3">Add to Cart</button>
+            <button (click)="gotToCheckout(individual_product.id)" class="btn btn-success">Buy Now</button>
+         </div>
+         <!-- Additional Info -->
+         <div class="mt-4">
+            <p><strong>Warranty Information:</strong> {{ individual_product.warrantyInformation }}</p>
+            <p><strong>Shipping Information:</strong> {{ individual_product.shippingInformation }}</p>
+            <p><strong>Return Policy:</strong> {{ individual_product.returnPolicy }}</p>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="product-rating-review">
+   <h6>Product Ratings & Reviews</h6>
+   <div class="row">
+      <div class="col-md-4">
+         <div class="rating">
+            <h1>{{ individual_product?.rating?.toFixed(1) }}</h1>
+            <i class="fa fa-star"></i>
+         </div>
+         <div class="rating-count">{{ individual_product?.reviews?.length }}  Ratings</div>
+         <div class="review-count">{{ individual_product?.reviews?.length }}  Reviews</div>
+      </div>
+      <div class="col-md-8">
+        <div *ngFor="let bar of ratingProgressBars" class="progress mt-3" style="height: 18px; position: relative;">
+            <!-- Set a minimum width of 1% to ensure the label is visible, even for 0% -->
+            <div class="progress-bar" 
+                 [class]="bar.class" 
+                 [style.width.%]="bar.percentage > 0 ? bar.percentage : 1"
+                 [style.background-color]="bar.percentage === 0 ? '#f8f9fa' : ''">
+               <!-- Progress bar label inside -->
+               <span *ngIf="bar.percentage > 0">{{ bar.label }} ({{ bar.percentage.toFixed(1) }}%)</span>
+            </div>
+            <!-- Progress bar label outside when percentage is 0 -->
+            <span *ngIf="bar.percentage === 0" 
+                  style="position: absolute; left: 5px; color: #000;">{{ bar.label }} (0%)</span>
+         </div>
+
+         <div class="product-review-form">
+            <h3 class="product-review-form-title">Add a review</h3>
+            <form (ngSubmit)="onSubmitReview()" #reviewForm="ngForm">
+                <div class="product-review-form-rating">
+                    <h3 class="rate-title">Rate this product:</h3>
+                    <div class="product-review-rating-wrapper d-flex">
+                        <app-rating [rating]="reviewRating"  [starCount]="starCount" [color]="starColor" (ratingUpdated)="onRatingChanged($event)"></app-rating>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="product-review-input is-textarea">
+                            <mat-form-field appearance="outline" class="example-full-width">
+                              <mat-label>Add Review</mat-label>
+                              <textarea matInput placeholder="Your Review Here..." [(ngModel)]="reviewDescription" name="reviewDescription" rows="4" required></textarea>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="product-review-btn">
+                            <button class="btn btn-primary" type="submit" [disabled]="reviewForm.invalid">Submit Review</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+         </div>
+         
+         <!-- Reviews Section -->
+         <div class="reviews-members" *ngFor="let review of individual_product?.reviews | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalItems }">
+            <div class="divider"></div>
+            <div class="media">
+               <a href="#"><mat-icon svgIcon="person" class="userIcon"></mat-icon></a>
+               <div class="media-body">
+                  <div class="reviews-members-header">
+                     <app-rating class="star-rating float-right" [rating]="review.rating" [color]="starColorW"></app-rating>
+                     <h6 class="mb-1"><a class="text-black" href="#">{{ review.reviewerName }}</a></h6>
+                     <span class="text-gray">{{ review.date | date }}</span>
+                  </div>
+                  <div class="reviews-members-body">
+                     <p>{{ review.comment }}</p>
+                  </div>
+               </div>
+            </div>
+            
+         </div>
+         <div class="shop-pagination mt-5 text-center">
+            <pagination-controls (pageChange)="page = $event"></pagination-controls>
+         </div>
+         
+         
+      </div>
+   </div>
+</div>
+
+
+
+ 

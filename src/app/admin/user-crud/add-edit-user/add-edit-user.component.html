@@ -1,0 +1,130 @@
+<app-breadcumbs [breadcrumbItems]="breadcrumbItems"></app-breadcumbs>
+<div class="card p-4 mt-4">
+    <div class="form-container">
+        <h4 class="pagetitle">{{pagetitle}}</h4>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <!-- Name -->
+            <div class="col-md-6 mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" id="name" class="form-control" formControlName="name" />
+            </div>
+      
+            <!-- Mobile Number -->
+            <div class="col-md-6 mb-3">
+              <label for="mobNumber" class="form-label">Mobile Number</label>
+              <input type="number" id="mobNumber" class="form-control" formControlName="mobNumber" />
+            </div>
+      
+            <!-- Age -->
+            <div class="col-md-6 mb-3">
+              <label for="age" class="form-label">Age</label>
+              <input type="number" id="age" class="form-control" formControlName="age" />
+            </div>
+      
+            <!-- Date of Birth -->
+            <div class="col-md-6 mb-3">
+              <label for="dob" class="form-label">Date of Birth</label>
+              <input type="date" id="dob" class="form-control" formControlName="dob" />
+            </div>
+      
+            <!-- Email -->
+            <div class="col-md-6 mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" class="form-control" formControlName="email" />
+            </div>
+      
+            <!-- Password -->
+            <div class="col-md-6 mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" id="password" class="form-control" formControlName="password" />
+            </div>
+      
+            <!-- Address -->
+            <div class="col-md-12">
+              <h5>Address</h5>
+              <div class="row" formGroupName="address">
+                <div class="col-md-6 mb-3">
+                  <label for="addLine1" class="form-label">Address Line 1</label>
+                  <input type="text" id="addLine1" class="form-control" formControlName="addLine1" formGroupName="address" />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="addLine2" class="form-label">Address Line 2</label>
+                  <input type="text" id="addLine2" class="form-control" formControlName="addLine2" formGroupName="address" />
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="city" class="form-label">City</label>
+                  <input type="text" id="city" class="form-control" formControlName="city" formGroupName="address" />
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="state" class="form-label">State</label>
+                  <input type="text" id="state" class="form-control" formControlName="state" formGroupName="address" />
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="zipCode" class="form-label">Zip Code</label>
+                  <input type="number" id="zipCode" class="form-control" formControlName="zipCode" formGroupName="address" />
+                </div>
+              </div>
+            </div>
+      
+            <!-- Language -->
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Languages</label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" formControlName="language" value="English" />
+                <label class="form-check-label">English</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" formControlName="language" value="Hindi" />
+                <label class="form-check-label">Hindi</label>
+              </div>
+            </div>
+      
+            <!-- Gender -->
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Gender</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="gender" value="Male" />
+                <label class="form-check-label">Male</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="gender" value="Female" />
+                <label class="form-check-label">Female</label>
+              </div>
+            </div>
+      
+            <!-- About You -->
+            <div class="col-md-12 mb-3">
+              <label for="aboutYou" class="form-label">About You</label>
+              <textarea id="aboutYou" class="form-control" formControlName="aboutYou" rows="3"></textarea>
+            </div>
+      
+            <!-- Upload Photo -->
+            <div class="col-md-12 mb-3">
+                <label for="uploadPhoto" class="form-label">Upload Photo</label>
+                <input type="file" id="uploadPhoto" class="form-control" (change)="handleFileUpload($event)" />
+                
+                <!-- Preview of the uploaded photo -->
+                <div *ngIf="photoPreview" class="mt-3">
+                  <img [src]="photoPreview" alt="Photo Preview" style="max-width: 200px; max-height: 200px;" />
+                </div>
+              </div>
+              
+      
+            <!-- Role -->
+            <div class="col-md-6 mb-3">
+                <label for="role" class="form-label">Role</label>
+                <select id="role" class="form-select" formControlName="role">
+                  <option value="admin">Admin</option>
+                  <option value="seller">Seller</option>
+                  <option value="buyer">Buyer</option>
+                </select>
+              </div>
+      
+            <div class="col-md-12 text-end">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+</div>

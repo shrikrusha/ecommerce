@@ -1,0 +1,309 @@
+<app-breadcumbs [breadcrumbItems]="breadcrumbItems"></app-breadcumbs>
+<section class="mt-5">
+    <div class="card-wrapper row row-gap">
+        <div class="col-xxl-4 col-xl-4 col-md-6">
+            <div class="card info-card sales-card">
+    
+              <div class="card-body">
+                <div class="d-flex align-items-center justify-content-center mb-3 column-gap">
+                    <mat-icon svgIcon="user" class="cardIcon" style="color: #0DCAF0;"></mat-icon>
+                  <div>
+                    <h5 class="card-title">Total Users</h5>
+                    <h6>145</h6> 
+                  </div>
+                </div>
+              </div>
+    
+            </div>
+          </div>
+          <div class="col-xxl-4 col-xl-4 col-md-6">
+            <div class="card info-card sales-card">
+
+              <div class="card-body">
+                <div class="d-flex align-items-center justify-content-center mb-3 column-gap">
+                    <mat-icon svgIcon="order" class="cardIcon" style="color: #4154f1;"></mat-icon>
+                  <div>
+                    <h5 class="card-title">Total Orders</h5>
+                    <h6>145</h6> 
+                  </div>
+                </div>
+              </div>
+    
+            </div>
+          </div>
+          <div class="col-xxl-4 col-xl-4 col-md-6">
+            <div class="card info-card sales-card">
+
+              <div class="card-body">
+                <div class="d-flex align-items-center justify-content-center mb-3 column-gap">
+                    <mat-icon svgIcon="box" class="cardIcon" style="color: #2eca6a;"></mat-icon>
+                  <div>
+                    <h5 class="card-title">Total Products</h5>
+                    <h6>145</h6> 
+                  </div>
+                </div>
+              </div>
+    
+            </div>
+          </div>
+    </div>
+</section>
+<section>
+    <div class="row mb-6 g-6">
+        <div class="col-md-6">
+          <div class="card p-2">
+            <div class="card-body row widget-separator">
+              <div class="col-sm-5 border-shift border-end">
+                <div class="d-flex align-items-center mb-2">
+                  <span class="text-primary fs-3 fw-medium">4.89</span>
+                  <i class="fa-solid fa-star text-primary"></i>
+                </div>
+                <h4 class="mb-2">Total 187 reviews</h4>
+                <p class="mb-2">All reviews are from genuine customers</p>
+                <span class="badge bg-label-primary rounded-pill mb-4 mb-sm-0">+5 This week</span>
+                <hr class="d-sm-none">
+              </div>
+      
+              <div class="col-sm-7 g-2 text-nowrap d-flex flex-column justify-content-between px-6 gap-3">
+                <div class="d-flex align-items-center gap-2">
+                  <small>5 Star</small>
+                  <div class="progress w-100 rounded-pill" style="height:8px;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 61.50%" aria-valuenow="61.50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <small class="w-px-20 text-end">124</small>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                  <small>4 Star</small>
+                  <div class="progress w-100 rounded-pill" style="height:8px;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 24%" aria-valuenow="24" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <small class="w-px-20 text-end">40</small>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                  <small>3 Star</small>
+                  <div class="progress w-100 rounded-pill" style="height:8px;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 12%" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <small class="w-px-20 text-end">12</small>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                  <small>2 Star</small>
+                  <div class="progress w-100 rounded-pill" style="height:8px;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 7%" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <small class="w-px-20 text-end">7</small>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                  <small>1 Star</small>
+                  <div class="progress w-100 rounded-pill" style="height:8px;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 2%" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <small class="w-px-20 text-end">2</small>
+                </div>
+      
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card p-2">
+            <div class="card-body row">
+              <div class="col-sm-5">
+                <div class="mb-5">
+                  <h5 class="mb-2 text-nowrap">Reviews statistics</h5>
+                  <p class="mb-0"> <span class="me-2">12 New reviews</span> <span class="badge badge-pill badge-success">+8.4%</span></p>
+                </div>
+      
+                <div>
+                  <h4 class="mb-2 fw-normal">
+                    <span class="text-success me-1">87%</span>Positive reviews
+                  </h4>
+                  <small>Weekly Report</small>
+                </div>
+              </div>
+              <div class="col-sm-7 d-flex justify-content-end align-items-end" style="position: relative;">
+                <div id="chart">
+                    <apx-chart
+                      [series]="chartOptions.series"
+                      [chart]="chartOptions.chart"
+                      [dataLabels]="chartOptions.dataLabels"
+                      [plotOptions]="chartOptions.plotOptions"
+                      [yaxis]="chartOptions.yaxis"
+                      [xaxis]="chartOptions.xaxis"
+                      [legend]="chartOptions.legend"
+                      [colors]="chartOptions.colors"
+                      [grid]="chartOptions.grid"
+                    ></apx-chart>
+                  </div>
+             </div>
+      
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+<section>
+    <div class="card p-4 mb-30">
+        <div class="title d-flex flex-wrap align-items-center justify-content-between">
+          <div class="left">
+            <h4 class="text-medium mb-30">Sales History</h4>
+          </div>
+          <div class="right">
+            <div class="select-style-1">
+              <div class="select-position select-sm">
+                <mat-form-field appearance="outline">
+                    <mat-select [(ngModel)]="selectedValue" name="food">
+                        <mat-option value="Today">Today</mat-option>
+                        <mat-option value="Yesterday">Yesterday</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+              </div>
+            </div>
+            <!-- end select -->
+          </div>
+        </div>
+        <!-- End Title -->
+        <div class="table-responsive">
+            <table class="table table-striped">
+               <thead>
+                  <tr>
+                     <th>
+                        Products
+                     </th>
+                     <th class="min-width">
+                        Category <i class="lni lni-arrows-vertical"></i>
+                     </th>
+                     <th class="min-width">
+                        Revenue <i class="lni lni-arrows-vertical"></i>
+                     </th>
+                     <th class="min-width">
+                        Status <i class="lni lni-arrows-vertical"></i>
+                     </th>
+                     <th>
+                        Actions <i class="lni lni-arrows-vertical"></i>
+                     </th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>
+                        <div class="product">
+                           <div class="image">
+                              <img src="assets/images/products/product-mini-1.jpg" alt="">
+                           </div>
+                           Bedroom
+                        </div>
+                     </td>
+                     <td>
+                        Interior
+                     </td>
+                     <td>
+                        $345
+                     </td>
+                     <td>
+                        <span class="status-btn badge badge-warning">Pending</span>
+                     </td>
+                     <td>
+                        <div class="action justify-content-end">
+                           <button class="btn btn-success me-2">
+                           <i class="fa-solid fa-pen"></i>
+                           </button>
+                           <button class="btn btn-danger">
+                           <i class="fa-solid fa-trash"></i>
+                           </button>
+                        </div>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <div class="product">
+                           <div class="image">
+                              <img src="assets/images/products/product-mini-2.jpg" alt="">
+                           </div>
+                           Arm Chair
+                        </div>
+                     </td>
+                     <td>
+                        Interior
+                     </td>
+                     <td>
+                        $345
+                     </td>
+                     <td>
+                        <span class="status-btn badge badge-info">Refund</span>
+                     </td>
+                     <td>
+                        <div class="action justify-content-end">
+                            <button class="btn btn-success me-2">
+                            <i class="fa-solid fa-pen"></i>
+                            </button>
+                            <button class="btn btn-danger">
+                            <i class="fa-solid fa-trash"></i>
+                            </button>
+                         </div>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <div class="product">
+                           <div class="image">
+                              <img src="assets/images/products/product-mini-3.jpg" alt="">
+                           </div>
+                           Sofa
+                        </div>
+                     </td>
+                     <td>
+                        Interior
+                     </td>
+                     <td>
+                        $345
+                     </td>
+                     <td>
+                        <span class="status-btn badge badge-success">Completed</span>
+                     </td>
+                     <td>
+                        <div class="action justify-content-end">
+                            <button class="btn btn-success me-2">
+                            <i class="fa-solid fa-pen"></i>
+                            </button>
+                            <button class="btn btn-danger">
+                            <i class="fa-solid fa-trash"></i>
+                            </button>
+                         </div>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <div class="product">
+                           <div class="image">
+                              <img src="assets/images/products/product-mini-4.jpg" alt="">
+                           </div>
+                           Kitchen
+                        </div>
+                     </td>
+                     <td>
+                        Interior
+                     </td>
+                     <td>
+                        $345
+                     </td>
+                     <td>
+                        <span class="status-btn badge badge-danger">Canceled</span>
+                     </td>
+                     <td>
+                        <div class="action justify-content-end ">
+                            <button class="btn btn-success me-2">
+                            <i class="fa-solid fa-pen"></i>
+                            </button>
+                            <button class="btn btn-danger">
+                            <i class="fa-solid fa-trash"></i>
+                            </button>
+                         </div>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <!-- End Table -->
+         </div>
+      </div>
+</section>

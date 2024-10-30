@@ -1,0 +1,32 @@
+app-home{
+    display: block;
+    height: 100%;
+    overflow: auto;
+}
+.feature-card {
+    padding: 28px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.feature-one__icon{
+   .icon{
+    font-size: 29px;
+    color: #323232;
+    opacity: 0.9;
+   }
+}
+.feature-one__title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1c1c1c;
+    text-transform: uppercase;
+    margin-bottom: 0 !important;
+}
+.feature-one__info{
+    font-weight: 400;
+    color: #757575;
+    margin-bottom: 0 !important;
+}

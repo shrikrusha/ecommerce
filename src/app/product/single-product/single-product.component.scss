@@ -1,0 +1,211 @@
+app-single-product{
+  display: block;
+  height: 100%;
+  overflow: auto;
+}
+.checked {
+    color: orange;
+  }
+  
+  .product-title {
+    font-weight: bold;
+    font-size: 1.75rem;
+  }
+  
+  .review {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
+  
+.product-main-image{
+    height: 400px;
+    display: flex;
+    justify-content: center;
+}
+  .product-main-image img {
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .product-thumbnails{
+    justify-content: center;
+  }
+  
+  .product-thumbnails img {
+    height: 100px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.2s ease;
+  }
+  
+  .product-thumbnails img:hover {
+    transform: scale(1.1);
+  }
+  
+  .checked {
+    color: #FFD700;
+  }
+  
+  .product-title {
+    font-weight: bold;
+    font-size: 1.75rem;
+  }
+  
+  .review {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
+  
+.product-rating{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+ 
+}
+
+  .product-rating-review{
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    margin-bottom: 16px;
+    padding: 20px 16px;
+    border: 1px solid rgb(234, 234, 242);
+    h6{
+        color: rgb(53, 53, 67);
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 28px;
+        text-align: left;
+        margin: 0px 0px 32px;
+        padding: 0px;
+    }
+    h1{
+        color: rgb(3, 141, 99);
+        font-style: normal;
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 52px;
+        margin: 0px;
+        padding: 0px 5px 0px 0px;
+    }
+    .rating{
+        display: flex;
+        align-items: center;
+    }
+    .fa-star{
+        color: rgb(3, 141, 99);
+        font-size: 27px;
+    }
+    .rating-count,.review-count{
+        color: rgb(139, 139, 163);
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 16px;
+        margin: 0px;
+        padding: 0px;
+    }
+
+  }
+  .divider{
+    height: 1px;
+    background-color: rgb(206, 206, 222);
+    border-radius: 2px;
+    width: 100%;
+    margin: 40px 0;
+  }
+
+  .media {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    a {
+        color: #007bff;
+        text-decoration: none;
+        background-color: transparent;
+    }
+}
+.media-body {
+    -ms-flex: 1;
+    flex: 1;
+}
+.float-right {
+    float: right!important;
+}
+.text-black {
+    color: #000000;
+}
+.total-like {
+    border: 1px solid;
+    border-radius: 50px;
+    display: inline-block;
+    font-weight: 500;
+    height: 34px;
+    line-height: 33px;
+    padding: 0 13px;
+    vertical-align: top;
+}
+.total-like-user-main a {
+    display: inline-block;
+    margin: 0 -17px 0 0;
+}
+.total-like-user {
+    border: 2px solid #fff;
+    height: 34px;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075)!important;
+    width: 34px;
+}
+.rounded-pill {
+    border-radius: 50rem!important;
+}
+
+.reviews-members{
+    .reviews-members-body{
+        margin-top: 16px;
+    }
+    .media img{
+        width: 56px;
+        height: 56px;
+        object-fit: cover;
+    }
+    .fa-star{
+        color: #FFD700 !important;
+        font-size: 14px !important;
+    }
+    h6{
+        color: rgb(97, 97, 115);
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        margin: 0px;
+        padding: 0px;
+    }
+    .userIcon{
+        width: 17px;
+        height: 17px;
+        margin-right: 5px;
+        line-height: 17px;
+    }
+}
+.example-full-width {
+  width: 100%;
+}
+
+.product-review-form{
+  margin-top: 32px;
+  .product-review-form-title {
+    font-weight: 600 !important;
+    font-size: 24px !important;
+    letter-spacing: -0.02em !important;
+    margin-bottom: 4px !important;
+  }
+  .product-review-form-rating {
+    margin-bottom: 24px;
+    .rate-title {
+      margin: 18px 0 0 0;
+  }
+}
+ 
+}

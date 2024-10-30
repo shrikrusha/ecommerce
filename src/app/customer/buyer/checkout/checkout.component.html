@@ -1,0 +1,45 @@
+<br>
+<!-- <h2 class="text-center text-bold">You click on product id:{{single_product_id}}</h2> -->
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/buyer-dashboard">Buyer</a></li>
+        <li class="breadcrumb-item"><a>Checkout</a></li>
+    </ol>
+    
+</nav>
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-heaer">Product Detail</div>
+            <div class="card-body product-detail" *ngIf="individual_product">
+                <div class="row" >
+                    <div class="col-md-4">
+                        <img src="{{individual_product.thumbnail}}" class="card-img-top" alt="{{individual_product.title}}">
+                    </div>
+                    <div class="col-md-4">
+                        <h4 class="text-bold card-title">{{individual_product.title}}</h4>
+                        <p class="card-text product-desc">{{individual_product.description}}</p>
+                        <p><span class="float-label"><strong>MRP</strong>:<del>{{individual_product.price}} </del></span>&nbsp;&nbsp;
+                            <span class="float-label"><strong>DP</strong>:{{individual_product.discountPercentage}}</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-heaer">Address Detail</div>
+            <div class="card-body product-detail" *ngIf="user_address">
+                <!-- <h4 class="text-bold card-title">{{user_address.name}}</h4> -->
+                <p class="card-text">{{user_address.addLine1}}, {{user_address.addLine2}}</p>
+                <p class="card-text">{{user_address.city}}, {{user_address.state}}</p>
+                <p class="card-text">Postal Code: {{user_address.zipCode}}</p>
+                <p class="card-text">Contact No: {{user_contact_no}}</p>
+                <a (click)="placeOrder()" class="btn btn-primary">Delever Here</a>
+                <div class="alert alert-info" role="alert">
+                    <strong>Note:</strong>We are not giving multiple address addition, if you want to deliver in different address for now change the address in <span routerLink="/my-profile" class="text-info sim-pointer">My Profile</span> section.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

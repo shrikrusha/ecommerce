@@ -1,0 +1,12 @@
+.ratingButton{
+    padding: 0 !important;
+    height: 24px !important;
+    width: 24px !important;
+    
+}
+.mat-mdc-icon-button .mat-mdc-button-persistent-ripple, 
+    .mat-mdc-focus-indicator, 
+    .mat-mdc-button-touch-target,
+    .mat-mdc-button-ripple{
+        display: none !important;
+      }

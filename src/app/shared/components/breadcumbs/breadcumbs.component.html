@@ -1,0 +1,16 @@
+<div class="shop-breadcrumb__area base-bg">
+  <div class="row">
+    <div class="col-xxl-12">
+      <div class="shop-breadcrumb__content p-relative z-index-1">
+        <div class="shop-breadcrumb__list">
+          <span *ngFor="let breadcrumb of breadcrumbItems; let i = index">
+            <a *ngIf="i !== breadcrumbItems.length - 1" (click)="navigateTo(breadcrumb)">{{ breadcrumb.label }}</a>
+            <span *ngIf="i === breadcrumbItems.length - 1">{{ breadcrumb.label }}</span>
+            <mat-icon svgIcon="chevron-right" class="breadcumbIcon" *ngIf="i !== breadcrumbItems.length - 1"></mat-icon>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
